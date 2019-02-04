@@ -1,5 +1,7 @@
 <img src="https://gkiril.github.io/minie/images/minie_logo.png" align="right" width="150" />
 
+---
+
 # MinIE - Open Information Extraction system
 
 * [Open Information Extraction - brief introduction](#open-information-extraction---brief-introduction)
@@ -11,6 +13,7 @@
 * [Resources](#resources)
 * [Citing](#citing)
 
+---
 
 ## Open Information Extraction - brief introduction
 
