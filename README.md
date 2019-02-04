@@ -2,13 +2,18 @@
 
 # MinIE - Open Information Extraction system
 
-An Open Information Extraction system, providing useful extractions:
-* represents contextual information with semantic annotations
-* identifies and removes words that are considered overly specific
-* high precision/recall 
-* shorter, semantically enriched extractions
+* [Open Information Extraction - brief introduction](#open-information-extraction---brief-introduction)
+* [MinIE - Open Information Extraction system](#minie---open-information-extraction-system)
+* [Version](#version)
+* [Demo](#demo)
+* [MinIE service](#minie-service)
+* [Python wrapper](#python-wrapper)
+* [Resources](#resources)
+* [Citing](#citing)
 
-## Open Information Extraction (OIE)
+
+## Open Information Extraction - brief introduction
+
 Open Information Extraction (OIE) systems aim to extract unseen relations and their arguments from unstructured text in unsupervised manner. In its simplest form, given a natural language sentence, they extract information in the form of a triple, consisted of subject (S), relation (R) and object (O). 
 
 Suppose we have the following input sentence:
@@ -22,6 +27,14 @@ An OIE system aims to make the following extractions:
 ("AMD"; "is based in"; "U.S.")
 ("AMD"; "is"; "technology company")
 ```
+
+## MinIE - Open Information Extraction system
+
+An Open Information Extraction system, providing useful extractions:
+* represents contextual information with semantic annotations
+* identifies and removes words that are considered overly specific
+* high precision/recall 
+* shorter, semantically enriched extractions
 
 ## Version
 
@@ -124,7 +137,7 @@ $ curl 'http://localhost:8080/minie/query' -X POST -d 'Obama visited the white h
 }
 ```
 
-## Python wrapper for MinIE (miniepy)
+## Python wrapper
 
 You can find a python wrapper for MinIE [here](https://github.com/mmxgn/miniepy). If you want to use MinIE with python, please follow the guidelines provided on the repo's README. 
 
