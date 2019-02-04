@@ -11,6 +11,7 @@
 * [MinIE service](#minie-service)
 * [Python wrapper](#python-wrapper)
 * [Resources](#resources)
+* [MinIE in other downstream applications](#minie-in-other-downstream-applications)
 * [Citing](#citing)
 
 ---
@@ -154,6 +155,10 @@ You can find a python wrapper for MinIE [here](https://github.com/mmxgn/miniepy)
   * [NYT](http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/pi1/pi1/minie/NYT.zip)
   * [Wiki](http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/pi1/pi1/minie/Wiki.zip)
   * [NYT-10k](http://dws.informatik.uni-mannheim.de/fileadmin/lehrstuehle/pi1/pi1/minie/nyt10k.zip)
+
+## MinIE in other downstream applications
+
+* *Fact Salience:* MinIE is used for the task of "Fact Salience". Details can be found in the paper [*"Facts that Matter"*](http://www.aclweb.org/anthology/D18-1129) by Marco Ponza, Luciano Del Corro, Gerhard Weikum, published on EMNLP 2018.
 
 ## Citing
 If you use MinIE in your work, please cite our paper:
