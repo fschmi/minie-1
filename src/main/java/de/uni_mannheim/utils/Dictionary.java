@@ -101,4 +101,8 @@ public class Dictionary {
     public void addWords(ObjectOpenHashSet<String> ws) {
         this.words.addAll(ws);
     }
+
+    public void addWord(String word) {
+        this.words.add(word);
+    }
 }

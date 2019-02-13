@@ -8,6 +8,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import java.util.logging.Logger;
+
 import de.uni_mannheim.minie.MinIE;
 import de.uni_mannheim.minie.annotation.AnnotatedPhrase;
 import de.uni_mannheim.minie.annotation.AnnotatedProposition;
@@ -18,23 +20,25 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 @Path("/query")
 public class FactsResource {
 
+    private final static Logger logger = Logger.getLogger(String.valueOf(Main.class));
     private static final StanfordCoreNLP parser = CoreNLPUtils.StanfordDepNNParser();
 
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     public FactsBean query(String sentence) {
-        MinIE minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.SAFE);
+        MinIE minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.DICTIONARY, DictResource.dictionary);
 
         List<Fact> facts = new ArrayList<>();
 
         for (AnnotatedProposition ap: minie.getPropositions()) {
-            List<AnnotatedPhrase> triple = ap.getTriple();
 
-            String s = triple.get(0).toString();
-            String p = triple.get(1).toString();
-            String o = triple.get(2).toString();
+            String sub = ap.getSubject().toString();
+            String rel = ap.getRelation().toString();
+            String obj = ap.getObject().toString();
+            String pol = ap.getPolarity().toString();
+            String mod = ap.getModality().toString();
 
-            Fact fact = new Fact(s, p, o);
+            Fact fact = new Fact(sub, rel, obj, pol, mod);
             facts.add(fact);
         }
 

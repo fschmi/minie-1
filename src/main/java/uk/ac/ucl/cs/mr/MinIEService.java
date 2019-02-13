@@ -7,7 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 public class MinIEService extends ResourceConfig {
 
     public MinIEService() {
-        super(FactsResource.class, JacksonFeature.class);
+        super(FactsResource.class, DictResource.class, JacksonFeature.class);
     }
 
 }
