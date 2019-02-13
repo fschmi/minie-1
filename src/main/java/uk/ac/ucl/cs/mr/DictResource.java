@@ -28,7 +28,6 @@ public class DictResource {
     @POST
     public String addWord(String word) {
         dictionary.addWord(word);
-        logger.info(dictionary.words().toString());
         return "Success: " + word;
     }
 
