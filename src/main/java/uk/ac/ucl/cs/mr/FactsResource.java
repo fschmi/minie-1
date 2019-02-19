@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.logging.Logger;
 
@@ -17,7 +19,7 @@ import de.uni_mannheim.utils.coreNLP.CoreNLPUtils;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
-@Path("/query")
+@Path("/query/{mode}")
 public class FactsResource {
 
     private final static Logger logger = Logger.getLogger(String.valueOf(Main.class));
@@ -25,8 +27,19 @@ public class FactsResource {
 
     @POST
     @Produces({MediaType.APPLICATION_JSON})
-    public FactsBean query(String sentence) {
-        MinIE minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.DICTIONARY, DictResource.dictionary);
+    public Response query(String sentence, @PathParam("mode") String mode) {
+        MinIE minie = null;
+        if (mode.equals("complete")) {
+            minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.COMPLETE);
+        } else if (mode.equals("safe")) {
+            minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.SAFE);
+        } else if (mode.equals("dictionary")) {
+            minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.DICTIONARY, DictResource.dictionary);
+        } else if (mode.equals("aggressive")) {
+            minie = new MinIE(sentence, FactsResource.parser, MinIE.Mode.AGGRESSIVE);
+        } else {
+            return Response.status(400).entity(new String[]{"Mode not available!"}).build();
+        }
 
         List<Fact> facts = new ArrayList<>();
 
@@ -42,6 +55,6 @@ public class FactsResource {
             facts.add(fact);
         }
 
-        return new FactsBean(facts);
+        return Response.ok(facts).build();
     }
 }

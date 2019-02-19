@@ -8,6 +8,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.logging.Logger;
 
@@ -26,14 +27,14 @@ public class DictResource {
     protected static Dictionary dictionary = new Dictionary();
 
     @POST
-    public String addWord(String word) {
+    public Response addWord(String word) {
         dictionary.addWord(word);
-        return "Success: " + word;
+        return Response.ok("Success: " + word).build();
     }
 
     @DELETE
-    public String resetDictionary() {
+    public Response resetDictionary() {
         dictionary = new Dictionary();
-        return "Success";
+        return Response.ok("Success").build();
     }
 }
